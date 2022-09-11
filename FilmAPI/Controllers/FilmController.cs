@@ -1,4 +1,5 @@
 ﻿using FilmAPI.Data;
+using FilmAPI.DTO.Film;
 using FilmAPI.Models;
 using FilmAPI.Services.FilmService;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +20,7 @@ namespace FilmAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<ActionResult<ServiceResponse<List<Film>>>> GetFilms()
+        public async Task<ActionResult<ServiceResponse<List<GetFilmsDto>>>> GetFilms()
         {
             return Ok(await _filmService.GetAllFilms());
         }
@@ -35,13 +36,13 @@ namespace FilmAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<Film>>>> AddFilm(Film film)
+        public async Task<ActionResult<ServiceResponse<List<GetFilmsDto>>>> AddFilm(AddFilmDto filmDto)
         {
-            return Ok(await _filmService.AddFilm(film));
+            return Ok(await _filmService.AddFilm(filmDto));
         }
 
         [HttpPut]
-        public async Task<ActionResult<List<Film>>> UpdateFilm(Film film)
+        public async Task<ActionResult<List<GetFilmsDto>>> UpdateFilm(Film film)
         {
             var serviceResponse = await _filmService.UpdateFilm(film);
             if (serviceResponse.Succes == false)
@@ -51,7 +52,7 @@ namespace FilmAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<List<Film>>> DeleteFilm(int id)
+        public async Task<ActionResult<List<GetFilmsDto>>> DeleteFilm(int id)
         {
             var serviceResponse = await _filmService.DeleteFilmById(id);
             if (serviceResponse.Succes == false)

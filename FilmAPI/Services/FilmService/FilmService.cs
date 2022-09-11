@@ -27,9 +27,9 @@ namespace FilmAPI.Services.FilmService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<Film>> GetFilmByID(int id)
+        public async Task<ServiceResponse<GetFilmDto>> GetFilmByID(int id)
         {
-            var serviceResponse = new ServiceResponse<Film>();
+            var serviceResponse = new ServiceResponse<GetFilmDto>();
 
             var dbFilm = await _context.Film.FindAsync(id);
 
@@ -40,7 +40,7 @@ namespace FilmAPI.Services.FilmService
                 return serviceResponse;
             }
 
-            serviceResponse.Data = dbFilm;
+            serviceResponse.Data = _mapper.Map<GetFilmDto>(dbFilm);
             return serviceResponse;
         }
 
@@ -58,7 +58,7 @@ namespace FilmAPI.Services.FilmService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetFilmsDto>>> UpdateFilm(Film request)
+        public async Task<ServiceResponse<List<GetFilmsDto>>> UpdateFilm(UpdateFilmDto request)
         {
             var serviceResponse = new ServiceResponse<List<GetFilmsDto>>();
             var films = new List<Film>();

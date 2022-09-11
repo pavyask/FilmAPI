@@ -9,7 +9,9 @@ namespace FilmAPI
         public AutoMapperProfile()
         {
             CreateMap<Film, GetFilmsDto>();
+            CreateMap<Film, GetFilmDto>();
             CreateMap<AddFilmDto, Film>();
+            CreateMap<UpdateFilmDto, Film>();
         }
     }
 }

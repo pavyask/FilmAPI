@@ -26,7 +26,7 @@ namespace FilmAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<Film>>> GetFilm(int id)
+        public async Task<ActionResult<ServiceResponse<GetFilmDto>>> GetFilm(int id)
         {
             var serviceResponse = await _filmService.GetFilmByID(id);
             if (serviceResponse.Succes == false)
@@ -42,9 +42,9 @@ namespace FilmAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<List<GetFilmsDto>>> UpdateFilm(Film film)
+        public async Task<ActionResult<List<GetFilmsDto>>> UpdateFilm(UpdateFilmDto filmDto)
         {
-            var serviceResponse = await _filmService.UpdateFilm(film);
+            var serviceResponse = await _filmService.UpdateFilm(filmDto);
             if (serviceResponse.Succes == false)
                 return NotFound(serviceResponse.Message);
 

@@ -11,7 +11,7 @@ Simple Films WEB API using ASP .NET CORE
 
 4. In the Package Manager Console (or in the Powershell inside project folder) enter command:
         dotnet ef database update
-    After that, the empty database named "filmdb" must be created
+   After that, the empty database named "filmdb" must be created
 
 5. Now you can start the program, which will open Swagger API documentation in your browser on this addres https://localhost:7259/swagger/index.html
 

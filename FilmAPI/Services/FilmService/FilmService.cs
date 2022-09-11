@@ -54,7 +54,7 @@ namespace FilmAPI.Services.FilmService
 
 
             var films = await _context.Film.ToListAsync();
-            serviceResponse.Data =films.Select(f=>_mapper.Map<GetFilmsDto>(f)).ToList();
+            serviceResponse.Data = films.Select(f => _mapper.Map<GetFilmsDto>(f)).ToList();
             return serviceResponse;
         }
 
@@ -75,9 +75,10 @@ namespace FilmAPI.Services.FilmService
                 return serviceResponse;
             }
 
-            dbFilm.Year = request.Year;
-            dbFilm.Title = request.Title;
-            dbFilm.Rating = request.Rating;
+            _mapper.Map(request, dbFilm);
+            //dbFilm.Year = request.Year;
+            //dbFilm.Title = request.Title;
+            //dbFilm.Rating = request.Rating;
 
             await _context.SaveChangesAsync();
 

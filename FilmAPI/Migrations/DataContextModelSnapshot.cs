@@ -21,7 +21,7 @@ namespace FilmAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("FilmAPI.Film", b =>
+            modelBuilder.Entity("FilmAPI.Models.Film", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
